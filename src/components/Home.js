@@ -31,15 +31,11 @@ const Home = () => {
 
 			setAppData(fData)
 
-			console.log(fData);
-
 		}
 
 		fetchData()
 
 	}, [])
-
-	console.log(showAddNew);
 
 	if (appData) {
 

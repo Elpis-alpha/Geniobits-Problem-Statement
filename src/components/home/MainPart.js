@@ -48,9 +48,6 @@ const MainPart = ({ appData, blur }) => {
 
 		const val = e.target.value.trim().toLowerCase()
 
-		console.log(appData);
-		console.log(val.length === 0);
-
 		if (val.length === 0) {
 
 			setAppStateData(appData)
@@ -68,8 +65,6 @@ const MainPart = ({ appData, blur }) => {
 		setStart(0)
 
 	}
-
-	console.log(appStateData);
 
 	return (
 
