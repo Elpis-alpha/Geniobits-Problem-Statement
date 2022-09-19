@@ -60,9 +60,11 @@ const MainPart = ({ appData, blur }) => {
 
 			setAppStateData({ ...appData, task_list })
 
-		}
+		} 
 
 		setStart(0)
+
+		setCount(10)
 
 	}
 

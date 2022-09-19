@@ -30,18 +30,6 @@ export const getApiJson = async (url, token) => {
 
 }
 
-const addClass = (element, clas) => {
-
-  const classList = clas.split(" ")
-
-  classList.forEach(item => {
-
-    element.classList.add(item)
-
-  })
-
-}
-
 export const getNoDays = (month, year) => {
 
   switch (month) {
