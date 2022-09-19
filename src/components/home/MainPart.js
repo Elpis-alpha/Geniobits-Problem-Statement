@@ -13,12 +13,16 @@ import { capitalize, datetoDateSlash, datetoTimeStr } from '../../helpers';
 
 const MainPart = ({ appData, blur }) => {
 
+	// The tasks starting point
 	const [start, setStart] = useState(0)
-
+	
+	// Number of tasks displayed
 	const [count, setCount] = useState(10)
-
+	
+	// For filtering data
 	const [appStateData, setAppStateData] = useState(appData)
-
+	
+	// For the select
 	const [switchVal, setSwitchVal] = useState({ value: 'a', label: 'All' })
 
 	const options = useMemo(() => [
@@ -29,6 +33,7 @@ const MainPart = ({ appData, blur }) => {
 
 	], []);
 
+	// To obtain the right status color
 	const statusColor = val => {
 
 		switch (val) {
@@ -44,16 +49,20 @@ const MainPart = ({ appData, blur }) => {
 
 	}
 
+	// Filters the tasks on input
 	const filterTasks = e => {
 
+		// trims the task
 		const val = e.target.value.trim().toLowerCase()
 
 		if (val.length === 0) {
-
+			
+			// resets everything
 			setAppStateData(appData)
 
 		} else {
 
+			// Filtration process
 			let task_list = appData.task_list.filter(task => task.task.toLowerCase().startsWith(val))
 
 			task_list = task_list.concat(appData.task_list.filter(task => (!task.task.toLowerCase().startsWith(val) && task.task.toLowerCase().includes(val))))
