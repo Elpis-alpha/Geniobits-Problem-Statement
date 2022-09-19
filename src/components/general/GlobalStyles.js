@@ -8,17 +8,20 @@ const GlobalStyle = createGlobalStyle`
 
 @font-face{
   font-family: 'Other';
-  src: url(/fonts/Comfortaa.ttf);
+  src: url(/fonts/lato.ttf);
+  font-display: block;
 }
 
 @font-face{
   font-family: 'Main';
-  src: url(/fonts/Comfortaa.ttf);
+  src: url(/fonts/lato.ttf);
+  font-display: block;
 }
 
 @font-face{
   font-family: 'Styled';
-  src: url(/fonts/Comfortaa.ttf);
+  src: url(/fonts/lato.ttf);
+  font-display: block;
 }
 
 /* Fonts Used End */
@@ -80,9 +83,9 @@ h6 {
 
 body{
   min-height: 100vh;
-  font-size: 1pc;
-  line-height: 2.5pc;
-  font-family: Main, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: .8pc;
+  line-height: 2pc;
+  font-family: Main, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
   display: flex;
   align-items: flex-start;

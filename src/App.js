@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import Home from './components/Home';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
 
@@ -24,18 +26,17 @@ const AppStyle = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background-color: #c2c2c2;
-  color: #2E2E2E;
+  background-color: #e4ecf7;
+  color: #444;
   transition: background-color .5s, color .5s;
   >div {
     z-index: 10;
   }
   button, a, input {
-    transition: background-color .5s, color .5s;
-    color: ${props => props.theme.col};
+    color: inherit;
   }
   button, input {
-    border: 1px solid ${props => props.theme.col};
+    border: 1px solid #333;
     transition: background-color .5s, color .5s, border .5s;
   }
   svg {
