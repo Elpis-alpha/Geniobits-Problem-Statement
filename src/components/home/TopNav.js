@@ -7,11 +7,11 @@ import { BsBell } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 
 
-const TopNav = () => {
+const TopNav = ({ blur }) => {
 
 	return (
 
-		<TopNavStyle>
+		<TopNavStyle style={{ filter: blur ? "blur(2px)" : "none" }}>
 
 			<div className="inner">
 

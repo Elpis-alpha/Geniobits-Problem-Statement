@@ -5,16 +5,19 @@ import { useMemo, useState } from 'react'
 import { FaAngleLeft, FaAngleRight, FaSearch } from 'react-icons/fa'
 
 import styled from 'styled-components'
+
 import { v4 } from 'uuid';
 
 import { capitalize, datetoDateSlash, datetoTimeStr } from '../../helpers';
 
 
-const MainPart = ({ appData }) => {
+const MainPart = ({ appData, blur }) => {
 
 	const [start, setStart] = useState(0)
 
 	const [count, setCount] = useState(10)
+
+	const [appStateData, setAppStateData] = useState(appData)
 
 	const [switchVal, setSwitchVal] = useState({ value: 'a', label: 'All' })
 
@@ -41,9 +44,36 @@ const MainPart = ({ appData }) => {
 
 	}
 
+	const filterTasks = e => {
+
+		const val = e.target.value.trim().toLowerCase()
+
+		console.log(appData);
+		console.log(val.length === 0);
+
+		if (val.length === 0) {
+
+			setAppStateData(appData)
+
+		} else {
+
+			let task_list = appData.task_list.filter(task => task.task.toLowerCase().startsWith(val))
+
+			task_list = task_list.concat(appData.task_list.filter(task => (!task.task.toLowerCase().startsWith(val) && task.task.toLowerCase().includes(val))))
+
+			setAppStateData({ ...appData, task_list })
+
+		}
+
+		setStart(0)
+
+	}
+
+	console.log(appStateData);
+
 	return (
 
-		<MainPartStyle>
+		<MainPartStyle style={{ filter: blur ? "blur(2px)" : "none" }}>
 
 			<div className="inner">
 
@@ -69,7 +99,7 @@ const MainPart = ({ appData }) => {
 
 						<div className="i-s">
 
-							<input type="text" placeholder='Search Tasks' />
+							<input type="text" placeholder='Search Tasks' onInput={filterTasks} />
 
 							<div className="s-ic"><FaSearch /></div>
 
@@ -83,11 +113,11 @@ const MainPart = ({ appData }) => {
 
 								<div className="datt">
 
-									{start}-{(start + count) > appData.task_list.length ? appData.task_list.length : (start + count)} of {appData.task_list.length}
+									{start}-{(start + count) > appStateData.task_list.length ? appStateData.task_list.length : (start + count)} of {appStateData.task_list.length}
 
 								</div>
 
-								<div className="r-arr" onClick={() => setStart(((start + count) <= appData.task_list.length) ? (start + count) : appData.task_list.length - 1)}>
+								<div className="r-arr" onClick={() => setStart(((start + count) <= appStateData.task_list.length) ? (start + count) : appStateData.task_list.length - 1)}>
 
 									<FaAngleRight />
 
@@ -129,7 +159,7 @@ const MainPart = ({ appData }) => {
 
 							<tbody>
 
-								{appData.task_list.slice(start, start + count).map(task => <tr key={v4()}>
+								{appStateData.task_list.slice(start, start + count).map(task => <tr key={v4()}>
 
 									<td>{task.task}</td>
 
@@ -278,6 +308,10 @@ const MainPartStyle = styled.div`
 
 				tr {
 					border-bottom: #e4ecf7;
+
+					td {
+						font-size: .7pc;
+					}
 
 					span {
 						width: 1pc;

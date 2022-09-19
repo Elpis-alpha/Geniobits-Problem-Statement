@@ -11,11 +11,11 @@ import { FiLogOut } from 'react-icons/fi'
 import { toast } from 'react-toastify'
 
 
-const LeftNav = () => {
+const LeftNav = ({ blur }) => {
 
 	return (
 
-		<LeftNavStyle>
+		<LeftNavStyle style={{ filter: blur ? "blur(2px)" : "none" }}>
 
 			<div className="inner">
 

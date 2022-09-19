@@ -14,6 +14,8 @@ import TopNav from "./home/TopNav"
 
 import MainPart from "./home/MainPart"
 
+import OverAddTask from "./home/OverAddTask"
+
 
 const Home = () => {
 
@@ -37,19 +39,23 @@ const Home = () => {
 
 	}, [])
 
+	console.log(showAddNew);
+
 	if (appData) {
 
 		return (
 
 			<HomeStyle>
 
-				<LeftNav />
+				<LeftNav blur={showAddNew} />
 
-				<TopNav />
+				<TopNav blur={showAddNew} />
 
-				<Tasks appData={appData} setShowAddNew={setShowAddNew} />
+				<Tasks appData={appData} setShowAddNew={setShowAddNew} blur={showAddNew} />
 
-				<MainPart appData={appData} />
+				<MainPart appData={appData} blur={showAddNew} />
+
+				{showAddNew && <OverAddTask setShowAddNew={setShowAddNew} />}
 
 			</HomeStyle>
 

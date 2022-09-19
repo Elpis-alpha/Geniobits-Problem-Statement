@@ -11,11 +11,11 @@ import { toast } from 'react-toastify'
 import { v4 } from 'uuid'
 
 
-const Tasks = ({ appData, setShowAddNew }) => {
+const Tasks = ({ appData, setShowAddNew, blur }) => {
 
 	return (
 
-		<TasksStyle>
+		<TasksStyle style={{ filter: blur ? "blur(2px)" : "none" }}>
 
 			<div className="inner">
 
@@ -71,11 +71,11 @@ const Tasks = ({ appData, setShowAddNew }) => {
 
 				<div className="add-new">
 
-					<div className='ic-hh'>
+					<div className='ic-hh' onClick={() => setShowAddNew(true)}>
 
 						<AiOutlinePlus size="1.5pc" />
 
-						<span onClick={() => setShowAddNew(true)}>Add New Task</span>
+						<span>Add New Task</span>
 
 					</div>
 
